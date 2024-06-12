@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PatientController;
 
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -23,4 +24,10 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('doctor/{id}', [DoctorController::class,'show']);
     Route::put('doctor/{id}', [DoctorController::class,'update']);
     Route::delete('doctor/{id}', [DoctorController::class,'destroy']);
+
+    Route::get('patient', [PatientController::class, 'index']);
+    Route::post('patient', [PatientController::class,'store']);
+    Route::get('patient/{id}', [PatientController::class,'show']);
+    Route::put('patient/{id}', [PatientController::class,'update']);
+    Route::delete('patient/{id}', [PatientController::class,'destroy']);
 });
