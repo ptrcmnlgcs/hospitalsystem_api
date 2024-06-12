@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\AppointmentController;
 
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -30,4 +31,11 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('patient/{id}', [PatientController::class,'show']);
     Route::put('patient/{id}', [PatientController::class,'update']);
     Route::delete('patient/{id}', [PatientController::class,'destroy']);
+
+    Route::get('appointments', [AppointmentController::class, 'index']);
+    Route::post('appointments', [AppointmentController::class,'store']);
+    Route::get('appointments/{id}', [AppointmentController::class,'show']);
+    Route::put('appointments/{id}', [AppointmentController::class,'update']);
+    Route::delete('appointments/{id}', [AppointmentController::class,'destroy']);
+    
 });
